@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+
+  smtp-email:
+    image: ovski/ansible:v4.0.0
+    volumes:
+      - ./:/var/www/ansible/playbooks/smtp-email
+    command: >
+      ansible-playbook /var/www/ansible/playbooks/smtp-email/main.yml
+        -e "smtp_user=user@gmail.com"
+        -e "smtp_password=fake_password"
+        -e "smtp_port=465"
+        -e "smtp_host=smtp.gmail.com"
+        -e "mail_to='User client <user.client@gmail.com>'"
+        -e "mail_subject=Hello"
+        -e "mail_body='Content of the email'"

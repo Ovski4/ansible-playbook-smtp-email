@@ -1,0 +1,16 @@
+---
+- name: Send an email via SMTP
+
+  hosts: localhost
+
+  tasks:
+
+    - name: Send a mail on error
+      mail:
+        host: "{{ smtp_host }}"
+        port: "{{ smtp_port }}"
+        username: "{{ smtp_user }}"
+        password: "{{ smtp_password }}"
+        to: "{{ mail_to }}"
+        subject: "{{ mail_subject }}"
+        body: "{{ mail_body }}"
